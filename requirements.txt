@@ -1,0 +1,9 @@
+httpx
+
+socks
+
+pysocks
+
+cloudscraper
+
+colorama

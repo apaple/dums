@@ -1770,7 +1770,7 @@ proxyResources = [
     'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks5.txt',
 ]
 
-socksFile = "socks5.txt"
+socksFile = ("socks5.txt")
 #GET SOCKS
 def socksCrawler():
     global socksFile, socksResources

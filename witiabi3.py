@@ -1774,7 +1774,7 @@ socksFile = ("socks5.txt")
 #GET SOCKS
 def socksCrawler():
     global socksFile, socksResources
-    f = open(socks5.txt,'wb')
+    f = open("socks5.txt",'wb')
     for url in proxyResources:
         try:
             f.write(requests.get(url).content)

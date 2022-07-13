@@ -3,7 +3,6 @@ import os, socket, threading, colorsys, time, random
 import socket
 import sys
 from os import system, name
-import httpx
 from httpx import AsyncClient, Headers
 import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random, socket
 import socket

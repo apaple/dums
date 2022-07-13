@@ -3,7 +3,7 @@ import os, socket, threading, colorsys, time, random
 import socket
 import sys
 from os import system, name
-import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random, socket
+import os, threading, requests, datetime, time, socket, socks, ssl, random, socket
 import socket
 from urllib.parse import urlparse
 from requests.cookies import RequestsCookieJar

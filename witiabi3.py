@@ -2563,5 +2563,5 @@ def ddos():
 
 
 for y in range(threads):
-    th = threading.Thread(target = ddos, args = until)
+    th = threading.Thread(target = ddos, args=(until))
     th.start()

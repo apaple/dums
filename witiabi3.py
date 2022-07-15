@@ -1778,7 +1778,7 @@ acceptall = [
 proxyResources = [
     'https://api.proxyscrape.com/?request=displayproxies&proxytype=socks5&timeout=10000&country=all',
     'https://www.proxy-list.download/api/v1/get?type=socks5',
-    'https://www.proxyscan.io/download?type=socks5',
+    'https://spys.me/socks.txt',
     'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks5.txt',
 ]
 

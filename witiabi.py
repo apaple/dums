@@ -2458,21 +2458,21 @@ def get_proxies():
     
 
 def LaunchSKY(url):
-	socksCrawler()
-	socksCrawle()
-	proxy = open("proxy.txt", 'r').read().split('\n')
-	req =  "GET / HTTP/1.1\r\nHost: " + urlparse(url).netloc + "\r\n"
-	req += "Cache-Control: no-cache\r\n"
-	req += "User-Agent: " + random.choice(useragents) + "\r\n"
-	req += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'"
-	req += "Sec-Fetch-Site: same-origin\r\n"
-	req += "Sec-GPC: 1\r\n"
-	req += "Sec-Fetch-Mode: navigate\r\n"
-	req += "Sec-Fetch-Dest: document\r\n"
-	req += "Upgrade-Insecure-Requests: 1\r\n"
-	req += "Connection: Keep-Alive\r\n\r\n"
-	while True:
-		try:
+    socksCrawler()
+    socksCrawle()
+    proxy = random.choice(proxies).strip().split(":")
+    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(url).netloc + "\r\n"
+    req += "Cache-Control: no-cache\r\n"
+    req += "User-Agent: " + random.choice(useragents) + "\r\n"
+    req += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'"
+    req += "Sec-Fetch-Site: same-origin\r\n"
+    req += "Sec-GPC: 1\r\n"
+    req += "Sec-Fetch-Mode: navigate\r\n"
+    req += "Sec-Fetch-Dest: document\r\n"
+    req += "Upgrade-Insecure-Requests: 1\r\n"
+    req += "Connection: Keep-Alive\r\n\r\n"
+    while True:
+        try:
             s = socks.socksocket()
             s.connect((str(urlparse(url).netloc), int(443)))
             s.set_proxy(socks.SOCKS5, str(proxy[0]), int(proxy[1]))

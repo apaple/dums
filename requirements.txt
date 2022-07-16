@@ -5,3 +5,7 @@ pysocks
 cloudscraper
 
 colorama
+
+selenium
+
+httpx

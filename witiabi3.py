@@ -2,6 +2,8 @@ import random, socket, threading
 import os, socket, threading, colorsys, time, random
 import socket
 import sys
+from requests.cookies import RequestsCookieJar
+import undetected_chromedriver as webdriver
 from os import system, name
 import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random, socket
 import httpx

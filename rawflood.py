@@ -27,7 +27,7 @@ target_host = sys.argv[1]
 target_port = int(sys.argv[2])  
 duration = int(sys.argv[3]) 
 
-num_threads = 5 # Change if you want nigga
+num_threads = 80 # Change if you want nigga
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
     for _ in range(num_threads):

